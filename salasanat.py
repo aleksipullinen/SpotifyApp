@@ -1,0 +1,25 @@
+import requests
+ClientID = "d5f830624b7d4c9ba857736b312fe5ff"
+
+ClientSecret = "9efc54b730134ef7af41ab0896362069"
+
+spotifytoken = "BQC9BUPLpDjV-DuG-MhvTau1sH2TVJBuJfEEG3Q1sWupucRZS4rRbUYxYxRUVl_QowD9jkYcZubI4Si4Edbqqa4pNcVHAw6HM1XbHvM1eIVxNC7xjzSb8O-n7VcbEpwU-NqVbS2hIVg3O1kujw587oOHTx6b5jpzhz6VV5zsq8q6-L8DGOempVqR3ixuqDO4_w"
+
+refreshToken = "AQCb6dS4PFBFZ9wIqkH2PbRNfZ6Fp2atAN89pQ-LIW5MF6uoFvtQjxNwYmyj_i6Re0krPZAawdKQJkBUXO_1IcthTKFXfPVKuvv6mYcRdlrzVkzrGE99iY8wCXAiUDptnu0"
+
+user_id = "aleksipullinen"
+
+base_64 = "ZDVmODMwNjI0YjdkNGM5YmE4NTc3MzZiMzEyZmU1ZmY6OWVmYzU0YjczMDEzNGVmN2FmNDFhYjA4OTYzNjIwNjk="
+
+
+# d5f830624b7d4c9ba857736b312fe5ff:9efc54b730134ef7af41ab0896362069
+
+# https://accounts.spotify.com/authorize?client_id=d5f830624b7d4c9ba857736b312fe5ff&response_type=code&redirect_uri=https%3A%2F%2Fgitlab.jyu.fi%2Fpulalemi%2Fcallback&scope=user-read-recently-played%20user-top-read
+
+# https://my-domain.com/callback?code=NApCCg..BkWtQ&state=34fFs29kd09
+
+# curl -H "Authorization: Basic ZDVmODMwNjI0YjdkNGM5YmE4NTc3MzZiMzEyZmU1ZmY6OWVmYzU0YjczMDEzNGVmN2FmNDFhYjA4OTYzNjIwNjk=" -d grant_type=authorization_code -d code=AQBYWZhJmveegpUZZ0t1InJ44L__ykP0tYCnR2c3SiNLZ8hX4DegEXgRVj-fnKlLLOLkujbddXHRloNuJq33V_BPAdjThrXT3-X6dcxXIYjhTZARfWZ-MWT1uz8XS37W0F3jpWBwqB8dDaTrfEdUx0OOYfE_9PZM06WuyFFFWBmyXHBJoecf24U0CSsYAUGdiqoDxIVbxYZ8nWASvvXv1aCRbCIU8Sl3Egp3TM8Q0LWHN1pBLg -d redirect_uri=https%3A%2F%2Fgitlab.jyu.fi%2Fpulalemi%2Fcallback https://accounts.spotify.com/api/token
+
+# AQDJfhXwvUN0Q2H3MpS3r97NQxE30U4eN2sPWMmZ9Omd2lsb0cFon9wZleWZXJYCHWH-XCqCEZdRzPkOnLn553V6cqOseFJZtPRrWSo_4KYOHUEttxjId92nLlfW_lHyGPlNQ_qHRCRNMcn31hzGHgY9ntK0vX7TR0KLIbfHqjnXM7FBKFL-4-kpOw
+
+# https://gitlab.jyu.fi/pulalemi/callback?code=AQCMDy1_qJiJe5K6l2AC6raoYF8Bp0lIfUVFbByQnx48SufUutONIgHWLEgNYpswC4WF5zw1fkT05fJ1vj0bjDefHqCppmKFjcj5N3M2HQ9D0nb_FRNHKVYPbF3HC0tYEWAyNfYSN50aH5DJlPSBiW46cd0Iw2oOgicZ4n5Gs0h87qlT4brbxu_eSjQebyPK0fJrSSg-Y0DofV5c03EGKS8jgbaGp4foyAznyGjQFRUjKHNwgw
