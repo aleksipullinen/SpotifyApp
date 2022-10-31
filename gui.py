@@ -23,26 +23,37 @@ class UI:
         tulostus2 = tk.Button(master=self.root, text="Tulosta viimeaikaiset", command=lambda:self.viimeaikaisten_tulostus())
         tulostus2.pack()
 
+        tulostus3 = tk.Button(master=self.root, text="Tulosta valence", command=lambda:self.mood_mittari())
+        tulostus3.pack()
+
         self.listbox = tk.Listbox(height=50)
         self.listbox.pack(side="left")
 
         self.listbox2 = tk.Listbox(height=50)
         self.listbox2.pack(side="right")
+
+        self.listbox3 = tk.Listbox(height=50)
+        self.listbox3.pack()
        
     def paivitys(self):
         #kutsu funktioon joka päivittää listan ja luo yhteyden
         Kappaleet.paivita(self.topLista)
 
     def suosituimpien_tulostus(self):
-        #Tulostaa listan listboxiin
+        #Tulostaa top50 listan listboxiin
         ranking = 0
         for i in self.topLista.etsi_kappaleet():
             ranking += 1
             self.listbox.insert(END,f"Sija {ranking}: {i}")
 
     def viimeaikaisten_tulostus(self):
+        #tulostaa viimeksi kuunnellut kappaleet(50kpl)
         for i in self.topLista.viimeaikaiset():
             self.listbox2.insert(END, i)
+
+    def mood_mittari(self):
+        for i in self.topLista.mood():
+            self.listbox3.insert(END, i)
 
 window = tk.Tk()
 window.title("Paulify")

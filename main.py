@@ -6,9 +6,9 @@ from salasanat import user_id
 from refresh import Refresh
 
 
-#Ohjelma näyttää käyttäjän Top50 kappaleet muutaman viimeisen vuoden ajalta. 
-#Seuraavaksi käyttöliittymän valmistelu tälle toiminnolle
-#Seuraavaksi lisätään ohjelmaan viimeksi kuunnellut kappaleet
+#Ohjelma näyttää käyttäjän Top50 kappaleet muutaman viimeisen vuoden ajalta. (tehty)
+#Seuraavaksi käyttöliittymän valmistelu tälle toiminnolle (tehty)
+#Seuraavaksi lisätään ohjelmaan viimeksi kuunnellut kappaleet (tehty)
 #Seuraavaksi viimeksi kuunnelluiden kappaleiden perusteella "valence" eli mittari kuinka positiivisia kuunnellut kappaleet ovat olleet
 #popularity? perusteella jonkinlainen ranking verrattuna muihin kappaleisiin
 
@@ -19,6 +19,8 @@ class Kappaleet:
         self.spotify_token = "spotifytoken"
         self.top50 = []
         self.viimeiset = []
+        self.kappale_id = []
+        self.id_valence = []
 
     def etsi_kappaleet(self):
         #hakee kuunnelluimmat kappaleet
@@ -41,13 +43,32 @@ class Kappaleet:
         vastaus = requests.get(kysely,
                 headers={"Content-Type": "application/json",
                 "Authorization": "Bearer {}".format(self.spotify_token)})
-    
         vastaus_json = vastaus.json()
         for i in vastaus_json["items"]:
+            self.kappale_id.append(i["track"]["id"])
+        print(self.kappale_id)
+
+        for i in vastaus_json["items"]:
             self.viimeiset.append(i["track"]["name"])
-            
         for i in self.viimeiset:
+            print(self.viimeiset)
             return self.viimeiset
+
+        
+
+    def mood(self):
+        #hakee kappaleen valencen kappale_id:n perusteella.
+        for i in self.kappale_id:
+            haku = f"https://api.spotify.com/v1/audio-features/{i}"
+            vastaus = requests.get(haku,
+                headers={"Content-Type": "application/json",
+                "Authorization": "Bearer {}".format(self.spotify_token)})
+            vastaus_json = vastaus.json()
+            #print(vastaus_json["valence"])
+            
+            self.id_valence.append(vastaus_json["valence"])
+        return self.id_valence
+            
                 
 
         
@@ -60,7 +81,8 @@ class Kappaleet:
 
         self.spotify_token = paivitys.refresh()
 
-        #self.viimeaikaiset()
+#         self.viimeaikaiset()
+#         self.mood()
 
 # a = Kappaleet()
 # a.paivita()
