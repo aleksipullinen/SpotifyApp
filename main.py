@@ -19,7 +19,7 @@ class Kappaleet:
         self.spotify_token = "spotifytoken"
         self.top50 = []
         self.viimeiset = []
-        self.kappale_id = []
+        self.kappale_id = []  
         self.id_valence = []
 
     def etsi_kappaleet(self):
@@ -46,13 +46,13 @@ class Kappaleet:
         vastaus_json = vastaus.json()
         for i in vastaus_json["items"]:
             self.kappale_id.append(i["track"]["id"])
-        print(self.kappale_id)
+        
 
         for i in vastaus_json["items"]:
             self.viimeiset.append(i["track"]["name"])
         for i in self.viimeiset:
-            print(self.viimeiset)
             return self.viimeiset
+
 
         
 
